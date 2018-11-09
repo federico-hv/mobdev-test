@@ -1,9 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const apiRoutes = require('./api');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.send({ title: 'Express' });
-});
+function setRoutes(app) {
+	app.use('/api', apiRoutes);
+}
 
-module.exports = router;
+module.exports = setRoutes;
