@@ -1,3 +1,4 @@
+const setMiddleware = require('./middleware');
 var createError = require('http-errors');
 var express = require('express');
 var logger = require('morgan');
@@ -7,10 +8,11 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
+
+app.use(logger('dev'));
+
+setMiddleware(app);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
